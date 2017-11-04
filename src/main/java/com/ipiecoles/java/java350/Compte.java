@@ -1,20 +1,20 @@
 package com.ipiecoles.java.java350;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.io.*;
 
 public class Compte implements Serializable {
-    private String typeCpte;
+    private String typeCompte;
     protected double valeurCourante;
     private String numeroCompte;
     private ArrayList<LigneComptable> ligneComptables;
     public static final int NB_LIGNE = 10;
     private int nbLigneReel;
+    private Scanner lectureClavier;
 
     public Compte() {
-        Scanner lectureClavier = new Scanner(System.in);
-        typeCpte = controleType();
+        lectureClavier = new Scanner(System.in);
+        typeCompte = controleType();
         System.out.print("Numéro du compte : ");
         numeroCompte = lectureClavier.next();
         valeurCourante = controleValinit();
@@ -23,9 +23,9 @@ public class Compte implements Serializable {
     }
 
     public Compte(String type) {
-        Scanner lectureClavier = new Scanner(System.in);
+        lectureClavier = new Scanner(System.in);
         if (type.equalsIgnoreCase("Epargne")) {
-            typeCpte = type;
+            typeCompte = type;
             System.out.print("Numéro du compte : ");
             numeroCompte = lectureClavier.next();
             valeurCourante = controleValinit();
@@ -41,7 +41,6 @@ public class Compte implements Serializable {
 
 
     private String controleType() {
-        Scanner lectureClavier = new Scanner(System.in);
         char tmpc;
         String tmpS = "";
         do {
@@ -61,7 +60,6 @@ public class Compte implements Serializable {
     }
 
     private double controleValinit() {
-        Scanner lectureClavier = new Scanner(System.in);
         double tmp, tmpval;
         do {
             System.out.print("Valeur initiale du compte : ");
@@ -82,7 +80,7 @@ public class Compte implements Serializable {
 
     public void afficherCompte() {
         System.out.print("Le compte n° : " + numeroCompte);
-        System.out.println(" est un compte " + typeCpte);
+        System.out.println(" est un compte " + typeCompte);
         ligneComptables.stream().forEach(LigneComptable::afficherLigne);
 
         System.out.println("Valeur courante : " + valeurCourante);
@@ -120,5 +118,13 @@ public class Compte implements Serializable {
 
     public String getNumeroCompte() {
         return numeroCompte;
+    }
+
+    public String getTypeCompte() {
+        return typeCompte;
+    }
+
+    public double getValeurCourante() {
+        return valeurCourante;
     }
 }
