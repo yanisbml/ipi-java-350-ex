@@ -1,5 +1,6 @@
 package com.ipiecoles.java.java350;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.io.*;
 
@@ -7,7 +8,7 @@ public class Compte implements Serializable {
     private String typeCpte;
     protected double valeurCourante;
     private String numeroCompte;
-    private LigneComptable[] ligne;
+    private ArrayList<LigneComptable> ligneComptables;
     public static final int NB_LIGNE = 10;
     private int nbLigneReel;
 
@@ -17,7 +18,7 @@ public class Compte implements Serializable {
         System.out.print("Numéro du compte : ");
         numeroCompte = lectureClavier.next();
         valeurCourante = controleValinit();
-        ligne = new LigneComptable[NB_LIGNE];
+        ligneComptables = new ArrayList();
         nbLigneReel = -1;
     }
 
@@ -28,13 +29,13 @@ public class Compte implements Serializable {
             System.out.print("Numéro du compte : ");
             numeroCompte = lectureClavier.next();
             valeurCourante = controleValinit();
-            ligne = new LigneComptable[NB_LIGNE];
+            ligneComptables = new ArrayList();
             nbLigneReel = -1;
         }
     }
 
     public LigneComptable quelleLigne(int n) {
-        return ligne[n];
+        return ligneComptables.get(n);
     }
 
 
@@ -70,30 +71,51 @@ public class Compte implements Serializable {
     }
 
     public void creerLigne() {
-        nbLigneReel++;
-        if (nbLigneReel < NB_LIGNE)
-            ligne[nbLigneReel] = new LigneComptable();
-        else {
-            nbLigneReel--;
-            decalerLesLignes();
-            ligne[nbLigneReel] = new LigneComptable();
-        }
-        valeurCourante = valeurCourante + ligne[nbLigneReel].getValeur();
+        LigneComptable ligne = new LigneComptable();
+        insererLigne(ligne);
+        valeurCourante = valeurCourante + ligne.getValeur();
     }
 
-    private void decalerLesLignes() {
-        for (int i = 1; i < NB_LIGNE; i++)
-            ligne[i - 1] = ligne[i];
+    private void insererLigne(LigneComptable ligneComptable) {
+        ligneComptables.add(ligneComptable);
     }
 
     public void afficherCompte() {
         System.out.print("Le compte n° : " + numeroCompte);
         System.out.println(" est un compte " + typeCpte);
-        if (nbLigneReel >= 0) {
-            for (int i = 0; i <= nbLigneReel; i++) ligne[i].afficherLigne();
-        }
+        ligneComptables.stream().forEach(LigneComptable::afficherLigne);
+
         System.out.println("Valeur courante : " + valeurCourante);
         if (valeurCourante < 0) System.out.println("Attention compte débiteur ... !!!");
+    }
+
+    public void genererReleve(byte mois, short annee) throws IOException {
+        if(mois <= 0 || mois > 12){
+            throw new IllegalArgumentException("Le mois doit être compris entre 1 et 12 : " + mois);
+        }
+
+        if(annee < 2000 || annee > Calendar.getInstance().get(Calendar.YEAR)){
+            throw new IllegalArgumentException("L'année doit être comprise entre 2000 et l'année courante : " + annee);
+        }
+        String nomFichier = numeroCompte + "_" + annee + "_" + mois + "_releve.txt";
+        BufferedWriter  releve = new BufferedWriter(new FileWriter(nomFichier));
+        releve.write("Relevé du mois de " + mois + " " + annee + "\n\n");
+        releve.write("Date\t\t\tMotif\t\t\tMode\t\t\tValeur\n");
+        ligneComptables.stream().forEach(ligneComptable -> {
+            try {
+                releve.write(ligneComptable.getDate() + "\t\t" +
+                        ligneComptable.getMotif() + "\t\t\t" +
+                        ligneComptable.getMode() + "\t\t" +
+                        ligneComptable.getValeur() + "\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        releve.write("\n\nSolde : " + valeurCourante);
+
+        releve.flush();
+        releve.close();
+        System.out.println("Relevé généré dans le fichier " + nomFichier);
     }
 
     public String getNumeroCompte() {

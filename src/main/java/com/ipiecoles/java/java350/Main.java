@@ -4,12 +4,13 @@ package com.ipiecoles.java.java350;
  * Created by Pijey on 04/11/2017.
  */
 
+import java.io.IOException;
 import java.util.*;
 
 public class Main {
-    public static void main (String [] argument) {
+    public static void main (String [] argument) throws IOException {
         byte choix = 0 ;
-        String numéroLu = "";
+        String numeroLu = "";
         // Les classes ListeCompte et FichierCompte sont définies dans le dossier "commun"
         ListeCompte C = new ListeCompte();
         FichierCompte F = new FichierCompte();
@@ -30,21 +31,21 @@ public class Main {
                     break;
                 case 2 :
                     System.out.print ( "Quel compte souhaitez vous afficher ? : ");
-                    numéroLu = lectureClavier.next();
-                    C.rechercheUnCompte(numéroLu);
+                    numeroLu = lectureClavier.next();
+                    C.rechercheUnCompte(numeroLu);
                     break;
                 case 3 :
                     C.afficheLesComptes();
                     break;
                 case 4 :
                     System.out.print ( "Pour quel compte souhaitez vous créer une ligne ? : ");
-                    numéroLu = lectureClavier.next();
-                    C.ajouteUneLigne(numéroLu);
+                    numeroLu = lectureClavier.next();
+                    C.ajouteUneLigne(numeroLu);
                     break;
                 case 5 :
                     System.out.print ( "Quel compte souhaitez vous supprimer ? : ");
-                    numéroLu = lectureClavier.next();
-                    C.supprimeUnCompte(numéroLu);
+                    numeroLu = lectureClavier.next();
+                    C.supprimeUnCompte(numeroLu);
                     break;
                 case 6 :
                     System.out.println("Sauvegarde des données dans Compte.dat");
@@ -54,6 +55,16 @@ public class Main {
                     sortir();
                     break;
                 case 7 :
+                    System.out.print ( "Pour quel compte souhaitez vous générer un relevé ? : ");
+                    numeroLu = lectureClavier.next();
+                    Compte compte = C.rechercheUnCompte(numeroLu);
+                    System.out.println("Pour quelle année souhaitez-vous générer un relevé ?");
+                    short annee = lectureClavier.nextShort();
+                    System.out.println("Pour quel mois de l'année " + annee + " ?");
+                    byte mois = lectureClavier.nextByte();
+                    compte.genererReleve(mois, annee);
+                    break;
+                case 8 :
                     alAide();
                     break;
                 default :
@@ -70,7 +81,8 @@ public class Main {
         System.out.println("4. Ecrire une ligne comptable");
         System.out.println("5. Supprimer un compte ");
         System.out.println("6. Sortir");
-        System.out.println("7. De l'aide");
+        System.out.println("7. Générer un relevé");
+        System.out.println("8. De l'aide");
         System.out.println();
         System.out.print("Votre choix : ");
         tmp  = lectureClavier.nextByte();

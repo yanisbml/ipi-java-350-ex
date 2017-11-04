@@ -76,7 +76,7 @@ public class LigneComptable implements Serializable {
         char tmpc;
         do {
             System.out.print("Motif de l'operation [S(alaire),");
-            System.out.print(" L(oyer), A(limenation), D(ivers)] : ");
+            System.out.print(" L(oyer), A(limentation), D(ivers)] : ");
             tmpc = lectureClavier.next().charAt(0);
         } while (tmpc != 'S' && tmpc != 'L' && tmpc != 'A' && tmpc != 'D');
         switch (tmpc) {

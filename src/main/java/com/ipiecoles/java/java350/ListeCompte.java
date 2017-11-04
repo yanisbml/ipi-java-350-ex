@@ -34,11 +34,12 @@ public class ListeCompte implements Serializable {
         return (c);
     }
 
-    public void rechercheUnCompte(String n) {
+    public Compte rechercheUnCompte(String n) {
         String clé = n;
         Compte c = (Compte) liste.get(clé);
         if (c != null) c.afficherCompte();
         else System.out.println("Le systeme ne connait pas le compte " + n);
+        return c;
     }
 
     public void supprimeUnCompte(String n) {
