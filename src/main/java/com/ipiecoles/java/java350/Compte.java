@@ -1,11 +1,16 @@
 package com.ipiecoles.java.java350;
 
-import java.util.*;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Scanner;
 
 public class Compte implements Serializable {
     private String typeCompte;
-    protected double valeurCourante;
+    protected Double valeurCourante;
     private String numeroCompte;
     private ArrayList<LigneComptable> ligneComptables;
     public static final int NB_LIGNE = 10;
@@ -59,8 +64,8 @@ public class Compte implements Serializable {
         return tmpS;
     }
 
-    private double controleValinit() {
-        double tmp, tmpval;
+    private Double controleValinit() {
+        Double tmp, tmpval;
         do {
             System.out.print("Valeur initiale du compte : ");
             tmpval = lectureClavier.nextDouble();
@@ -124,7 +129,11 @@ public class Compte implements Serializable {
         return typeCompte;
     }
 
-    public double getValeurCourante() {
+    public Double getValeurCourante() {
         return valeurCourante;
+    }
+
+    public ArrayList<LigneComptable> getLigneComptables() {
+        return ligneComptables;
     }
 }

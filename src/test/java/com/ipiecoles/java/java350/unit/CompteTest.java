@@ -1,15 +1,18 @@
+package com.ipiecoles.java.java350.unit;
+
 import com.ipiecoles.java.java350.Compte;
+import com.ipiecoles.java.java350.utils.TestUtils;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 
 public class CompteTest {
-    public final static String LINE_SEPARATOR = System.getProperty("line.separator");
+
     @Test
     public void testCompte(){
         //Given
-        String input = "C"+LINE_SEPARATOR+"123"+LINE_SEPARATOR+"500"+LINE_SEPARATOR;
+        String input = "C" + TestUtils.LINE_SEPARATOR + "123" + TestUtils.LINE_SEPARATOR + "500" + TestUtils.LINE_SEPARATOR;
         ByteArrayInputStream inContent = new ByteArrayInputStream(input.getBytes());
         System.setIn(inContent);
 
