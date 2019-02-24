@@ -1,5 +1,6 @@
 package com.ipiecoles.java.java350.service;
 
+import com.ipiecoles.java.java350.exception.EmployeException;
 import com.ipiecoles.java.java350.model.Employe;
 import com.ipiecoles.java.java350.model.Entreprise;
 import com.ipiecoles.java.java350.model.NiveauEtude;
@@ -25,9 +26,9 @@ public class EmployeService {
      * @param poste Le poste de l'employé
      * @param niveauEtude Le niveau d'étude de l'employé
      * @param tempsPartiel Le pourcentage d'activité en cas de temps partiel
-     * @return L'employé créé, une fois sauvegardé en BDD
+     *
      */
-    public void embaucheEmploye(String nom, String prenom, Poste poste, NiveauEtude niveauEtude, Double tempsPartiel){
+    public void embaucheEmploye(String nom, String prenom, Poste poste, NiveauEtude niveauEtude, Double tempsPartiel) throws EmployeException {
 
         //Récupération du type d'employé à partir du poste
         String typeEmploye = poste.name().substring(0,1);
@@ -40,7 +41,7 @@ public class EmployeService {
         //... et incrémentation
         Integer numeroMatricule = Integer.parseInt(lastMatricule) + 1;
         if(numeroMatricule >= 100000){
-            throw new RuntimeException("Limite des 100000 matricules atteinte !");
+            throw new EmployeException("Limite des 100000 matricules atteinte !");
         }
         //On complète le numéro avec des 0 à gauche
         String matricule = "00000" + numeroMatricule;
