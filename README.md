@@ -43,7 +43,7 @@ Créer la classe permettant de tester la méthode `getNombreAnneeAnciennete` et 
 
 ### Tests paramétrés
 
-Créer une méthode de test paramétré permettant de tester le plus exhaustivement possible la méthode `getPrimeAnnuelle`
+Créer une méthode de test paramétré permettant de tester le plus exhaustivement possible la méthode `getPrimeAnnuelle` et corriger les éventuels problème de cette méthode.
 
 ### Tests mockés
 
@@ -65,6 +65,7 @@ TODO
 
 ## Maintenabilité
 
+- S'assurer de la lisibilité du code et du respect des conventions
 - Ajouter des `logger` aux endroits stratégiques du code en utilisant le bon niveau de log.
 - Vérifier et le cas échéant compléter la documentation du code, générer la JavaDoc.
 - Ajouter à votre Github une documentation statique avec Jekyll
