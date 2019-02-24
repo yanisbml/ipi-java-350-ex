@@ -50,7 +50,7 @@ public class EmployeServiceIntegrationTest {
 
         //Then
         List<Employe> emps = employeRepository.findByMatricule("T12346");
-        Assertions.assertEquals(emps.size(),1);
+        Assertions.assertEquals(1, emps.size());
         Employe employe = emps.get(0);
         Assertions.assertNotNull(employe);
         Assertions.assertEquals(nom, employe.getNom());
