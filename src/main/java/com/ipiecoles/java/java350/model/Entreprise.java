@@ -1,9 +1,7 @@
 package com.ipiecoles.java.java350.model;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public final class Entreprise {
     public static final Double SALAIRE_BASE = 1521.22;
@@ -13,9 +11,10 @@ public final class Entreprise {
     public static final Double PRIME_ANCIENNETE = 100d;
     public static final Integer PERFORMANCE_BASE = 1;
     public static final Integer NB_JOURS_MAX_FORFAIT = 218;
+    private static final double PRIME_BASE = 1000d;
 
-    public static HashMap<NiveauEtude, Double> COEFF_SALAIRE_ETUDES = new HashMap<>();
-    public static HashMap<Integer, LocalDate> datePaque = new HashMap<>();
+    public static final EnumMap<NiveauEtude, Double> COEFF_SALAIRE_ETUDES = new EnumMap<>(NiveauEtude.class);
+    private static final Map<Integer, LocalDate> datePaque = new HashMap<>();
 
     private Entreprise() {
 
@@ -58,7 +57,7 @@ public final class Entreprise {
 
 
     public static Double primeAnnuelleBase() {
-        return 1000d;
+        return PRIME_BASE;
     }
 
     public static List<LocalDate> joursFeries(LocalDate now){
