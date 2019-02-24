@@ -74,7 +74,7 @@ public final class Entreprise {
                 LocalDate.of(now.getYear(), 5,8),
                 // Jeudi 40 jours après Pâques Ascension Fête chrétienne célébrant la montée de Jésus aux cieux.
                 datePaque.get(now.getYear()).plusDays(40L),
-                // Le lundi suivant le dimanche de Pentecôte (le septième après Pâques).
+                // Le lundi suivant le dimanche de Pentecôte (le septième après Pâques)
                 datePaque.get(now.getYear()).plusDays(50L),
                 // 14 juillet Fête nationale
                 LocalDate.of(now.getYear(), 7,14),
