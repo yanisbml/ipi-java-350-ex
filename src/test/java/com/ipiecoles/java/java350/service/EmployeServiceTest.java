@@ -1,5 +1,6 @@
 package com.ipiecoles.java.java350.service;
 
+import com.ipiecoles.java.java350.exception.EmployeException;
 import com.ipiecoles.java.java350.model.Employe;
 import com.ipiecoles.java.java350.model.NiveauEtude;
 import com.ipiecoles.java.java350.model.Poste;
@@ -138,7 +139,7 @@ public class EmployeServiceTest {
 
         //When/Then
         //When/Then
-        RuntimeException e = Assertions.assertThrows(RuntimeException.class, () -> employeService.embaucheEmploye(nom, prenom, poste, niveauEtude, tempsPartiel));
+        EmployeException e = Assertions.assertThrows(EmployeException.class, () -> employeService.embaucheEmploye(nom, prenom, poste, niveauEtude, tempsPartiel));
         Assertions.assertEquals("Limite des 100000 matricules atteinte !", e.getMessage());
     }
 }
