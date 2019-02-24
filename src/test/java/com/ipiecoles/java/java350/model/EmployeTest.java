@@ -19,7 +19,7 @@ public class EmployeTest {
         Integer anneeAnciennete = e.getNombreAnneeAnciennete();
 
         //Then
-        Assertions.assertEquals(anneeAnciennete.intValue(), 0);
+        Assertions.assertEquals(0, anneeAnciennete.intValue());
     }
 
     @Test
@@ -32,7 +32,7 @@ public class EmployeTest {
         Integer anneeAnciennete = e.getNombreAnneeAnciennete();
 
         //Then
-        Assertions.assertEquals(anneeAnciennete.intValue(), 2);
+        Assertions.assertEquals(2, anneeAnciennete.intValue());
     }
 
     @Test
@@ -45,7 +45,7 @@ public class EmployeTest {
         Integer anneeAnciennete = e.getNombreAnneeAnciennete();
 
         //Then
-        Assertions.assertEquals(anneeAnciennete.intValue(), 0);
+        Assertions.assertEquals(0, anneeAnciennete.intValue());
     }
 
     @Test
@@ -58,7 +58,7 @@ public class EmployeTest {
         Integer anneeAnciennete = e.getNombreAnneeAnciennete();
 
         //Then
-        Assertions.assertEquals(anneeAnciennete.intValue(), 0);
+        Assertions.assertEquals(0, anneeAnciennete.intValue());
     }
 
     @ParameterizedTest
@@ -81,7 +81,7 @@ public class EmployeTest {
         Double prime = employe.getPrimeAnnuelle();
 
         //Then
-        Assertions.assertEquals(prime, primeAnnuelle);
+        Assertions.assertEquals(primeAnnuelle, prime);
 
     }
 

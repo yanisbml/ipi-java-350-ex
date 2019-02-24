@@ -53,14 +53,14 @@ public class EmployeServiceIntegrationTest {
         Assertions.assertEquals(emps.size(),1);
         Employe employe = emps.get(0);
         Assertions.assertNotNull(employe);
-        Assertions.assertEquals(employe.getNom(), nom);
-        Assertions.assertEquals(employe.getPrenom(), prenom);
-        Assertions.assertEquals(employe.getDateEmbauche().format(DateTimeFormatter.ofPattern("yyyyMMdd")), LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")));
-        Assertions.assertEquals(employe.getMatricule(), "T12346");
-        Assertions.assertEquals(employe.getTempsPartiel().doubleValue(), 1.0);
+        Assertions.assertEquals(nom, employe.getNom());
+        Assertions.assertEquals(prenom, employe.getPrenom());
+        Assertions.assertEquals(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")), employe.getDateEmbauche().format(DateTimeFormatter.ofPattern("yyyyMMdd")));
+        Assertions.assertEquals("T12346", employe.getMatricule());
+        Assertions.assertEquals(1.0, employe.getTempsPartiel().doubleValue());
 
         //1521.22 * 1.2 * 1.0
-        Assertions.assertEquals(employe.getSalaire().doubleValue(),1825.46);
+        Assertions.assertEquals(1825.46, employe.getSalaire().doubleValue());
     }
 
 }

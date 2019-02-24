@@ -53,14 +53,14 @@ public class EmployeServiceTest {
         //Then
         ArgumentCaptor<Employe> employeArgumentCaptor = ArgumentCaptor.forClass(Employe.class);
         verify(employeRepository, times(1)).save(employeArgumentCaptor.capture());
-        Assertions.assertEquals(employeArgumentCaptor.getValue().getNom(), nom);
-        Assertions.assertEquals(employeArgumentCaptor.getValue().getPrenom(), prenom);
-        Assertions.assertEquals(employeArgumentCaptor.getValue().getDateEmbauche().format(DateTimeFormatter.ofPattern("yyyyMMdd")), LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")));
-        Assertions.assertEquals(employeArgumentCaptor.getValue().getMatricule(), "T00346");
-        Assertions.assertEquals(employeArgumentCaptor.getValue().getTempsPartiel(), tempsPartiel);
+        Assertions.assertEquals(nom, employeArgumentCaptor.getValue().getNom());
+        Assertions.assertEquals(prenom, employeArgumentCaptor.getValue().getPrenom());
+        Assertions.assertEquals(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")), employeArgumentCaptor.getValue().getDateEmbauche().format(DateTimeFormatter.ofPattern("yyyyMMdd")));
+        Assertions.assertEquals("T00346", employeArgumentCaptor.getValue().getMatricule());
+        Assertions.assertEquals(tempsPartiel, employeArgumentCaptor.getValue().getTempsPartiel());
 
         //1521.22 * 1.2 * 1.0
-        Assertions.assertEquals(employeArgumentCaptor.getValue().getSalaire().doubleValue(),1825.46);
+        Assertions.assertEquals(1825.46, employeArgumentCaptor.getValue().getSalaire().doubleValue());
     }
 
     @Test
@@ -80,14 +80,14 @@ public class EmployeServiceTest {
         //Then
         ArgumentCaptor<Employe> employeArgumentCaptor = ArgumentCaptor.forClass(Employe.class);
         verify(employeRepository, times(1)).save(employeArgumentCaptor.capture());
-        Assertions.assertEquals(employeArgumentCaptor.getValue().getNom(), nom);
-        Assertions.assertEquals(employeArgumentCaptor.getValue().getPrenom(), prenom);
-        Assertions.assertEquals(employeArgumentCaptor.getValue().getDateEmbauche().format(DateTimeFormatter.ofPattern("yyyyMMdd")), LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")));
-        Assertions.assertEquals(employeArgumentCaptor.getValue().getMatricule(), "M00346");
-        Assertions.assertEquals(employeArgumentCaptor.getValue().getTempsPartiel(), tempsPartiel);
+        Assertions.assertEquals(nom, employeArgumentCaptor.getValue().getNom());
+        Assertions.assertEquals(prenom, employeArgumentCaptor.getValue().getPrenom());
+        Assertions.assertEquals(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")), employeArgumentCaptor.getValue().getDateEmbauche().format(DateTimeFormatter.ofPattern("yyyyMMdd")));
+        Assertions.assertEquals("M00346", employeArgumentCaptor.getValue().getMatricule());
+        Assertions.assertEquals(tempsPartiel, employeArgumentCaptor.getValue().getTempsPartiel());
 
         //1521.22 * 1.4 * 0.5
-        Assertions.assertEquals(employeArgumentCaptor.getValue().getSalaire().doubleValue(), 1064.85);
+        Assertions.assertEquals(1064.85, employeArgumentCaptor.getValue().getSalaire().doubleValue());
     }
 
     @Test
@@ -107,7 +107,7 @@ public class EmployeServiceTest {
         //Then
         ArgumentCaptor<Employe> employeArgumentCaptor = ArgumentCaptor.forClass(Employe.class);
         verify(employeRepository, times(1)).save(employeArgumentCaptor.capture());
-        Assertions.assertEquals(employeArgumentCaptor.getValue().getMatricule(), "M00001");
+        Assertions.assertEquals("M00001", employeArgumentCaptor.getValue().getMatricule());
     }
 
     @Test
@@ -123,7 +123,7 @@ public class EmployeServiceTest {
 
         //When/Then
         EntityExistsException e = Assertions.assertThrows(EntityExistsException.class, () -> employeService.embaucheEmploye(nom, prenom, poste, niveauEtude, tempsPartiel));
-        Assertions.assertEquals(e.getMessage(), "L'employé de matricule M00001 existe déjà en BDD");
+        Assertions.assertEquals("L'employé de matricule M00001 existe déjà en BDD", e.getMessage());
     }
 
     @Test
@@ -139,6 +139,6 @@ public class EmployeServiceTest {
         //When/Then
         //When/Then
         RuntimeException e = Assertions.assertThrows(RuntimeException.class, () -> employeService.embaucheEmploye(nom, prenom, poste, niveauEtude, tempsPartiel));
-        Assertions.assertEquals(e.getMessage(), "Limite des 100000 matricules atteinte !");
+        Assertions.assertEquals("Limite des 100000 matricules atteinte !", e.getMessage());
     }
 }

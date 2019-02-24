@@ -40,7 +40,7 @@ public class EmployeRepositoryTest {
         String lastMatricule = employeRepository.findLastMatricule();
 
         //Then
-        Assertions.assertEquals(lastMatricule, "12345");
+        Assertions.assertEquals("12345", lastMatricule);
     }
 
     @Test
@@ -54,6 +54,6 @@ public class EmployeRepositoryTest {
         String lastMatricule = employeRepository.findLastMatricule();
 
         //Then
-        Assertions.assertEquals(lastMatricule, "40325");
+        Assertions.assertEquals("40325", lastMatricule);
     }
 }
