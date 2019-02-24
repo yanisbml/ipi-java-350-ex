@@ -26,9 +26,9 @@ public class EmployeService {
      * @param poste Le poste de l'employé
      * @param niveauEtude Le niveau d'étude de l'employé
      * @param tempsPartiel Le pourcentage d'activité en cas de temps partiel
-     * @return L'employé créé, une fois sauvegardé en BDD
+     *
      */
-    public void embaucheEmploye(String nom, String prenom, Poste poste, NiveauEtude niveauEtude, Double tempsPartiel){
+    public void embaucheEmploye(String nom, String prenom, Poste poste, NiveauEtude niveauEtude, Double tempsPartiel) throws EmployeException {
 
         //Récupération du type d'employé à partir du poste
         String typeEmploye = poste.name().substring(0,1);

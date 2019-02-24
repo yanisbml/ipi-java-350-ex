@@ -38,7 +38,7 @@ public class EmployeServiceTest {
     }
 
     @Test
-    public void testEmbaucheEmployeTechnicienPleinTempsBts(){
+    public void testEmbaucheEmployeTechnicienPleinTempsBts() throws EmployeException {
         //Given
         String nom = "Doe";
         String prenom = "John";
@@ -65,7 +65,7 @@ public class EmployeServiceTest {
     }
 
     @Test
-    public void testEmbaucheEmployeManagerMiTempsMaster(){
+    public void testEmbaucheEmployeManagerMiTempsMaster() throws EmployeException {
         //Given
         String nom = "Doe";
         String prenom = "John";
@@ -92,7 +92,7 @@ public class EmployeServiceTest {
     }
 
     @Test
-    public void testEmbaucheEmployeManagerMiTempsMasterNoLastMatricule(){
+    public void testEmbaucheEmployeManagerMiTempsMasterNoLastMatricule() throws EmployeException {
         //Given
         String nom = "Doe";
         String prenom = "John";
@@ -137,7 +137,6 @@ public class EmployeServiceTest {
         Double tempsPartiel = 0.5;
         when(employeRepository.findLastMatricule()).thenReturn("99999");
 
-        //When/Then
         //When/Then
         EmployeException e = Assertions.assertThrows(EmployeException.class, () -> employeService.embaucheEmploye(nom, prenom, poste, niveauEtude, tempsPartiel));
         Assertions.assertEquals("Limite des 100000 matricules atteinte !", e.getMessage());

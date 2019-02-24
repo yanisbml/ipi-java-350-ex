@@ -1,6 +1,7 @@
 package com.ipiecoles.java.java350.service;
 
 
+import com.ipiecoles.java.java350.exception.EmployeException;
 import com.ipiecoles.java.java350.model.Employe;
 import com.ipiecoles.java.java350.model.Entreprise;
 import com.ipiecoles.java.java350.model.NiveauEtude;
@@ -36,7 +37,7 @@ public class EmployeServiceIntegrationTest {
     }
 
     @Test
-    public void integrationEmbaucheEmploye(){
+    public void integrationEmbaucheEmploye() throws EmployeException {
         //Given
         employeRepository.save(new Employe("Doe", "John", "T12345", LocalDate.now(), Entreprise.SALAIRE_BASE, 1, 1.0));
         String nom = "Doe";
