@@ -46,7 +46,7 @@ public class EmployeServiceTest {
         NiveauEtude niveauEtude = NiveauEtude.BTS_IUT;
         Double tempsPartiel = 1.0;
         when(employeRepository.findLastMatricule()).thenReturn("00345");
-        when(employeRepository.findByMatricule("T00346")).thenReturn(new ArrayList<>());
+        when(employeRepository.findByMatricule("T00346")).thenReturn(null);
 
         //When
         employeService.embaucheEmploye(nom, prenom, poste, niveauEtude, tempsPartiel);
@@ -73,7 +73,7 @@ public class EmployeServiceTest {
         NiveauEtude niveauEtude = NiveauEtude.MASTER;
         Double tempsPartiel = 0.5;
         when(employeRepository.findLastMatricule()).thenReturn("00345");
-        when(employeRepository.findByMatricule("M00346")).thenReturn(new ArrayList<>());
+        when(employeRepository.findByMatricule("M00346")).thenReturn(null);
 
         //When
         employeService.embaucheEmploye(nom, prenom, poste, niveauEtude, tempsPartiel);
@@ -100,7 +100,7 @@ public class EmployeServiceTest {
         NiveauEtude niveauEtude = NiveauEtude.MASTER;
         Double tempsPartiel = 0.5;
         when(employeRepository.findLastMatricule()).thenReturn(null);
-        when(employeRepository.findByMatricule("M00001")).thenReturn(new ArrayList<>());
+        when(employeRepository.findByMatricule("M00001")).thenReturn(null);
 
         //When
         employeService.embaucheEmploye(nom, prenom, poste, niveauEtude, tempsPartiel);
@@ -120,7 +120,7 @@ public class EmployeServiceTest {
         NiveauEtude niveauEtude = NiveauEtude.MASTER;
         Double tempsPartiel = 0.5;
         when(employeRepository.findLastMatricule()).thenReturn(null);
-        when(employeRepository.findByMatricule("M00001")).thenReturn(Arrays.asList(new Employe()));
+        when(employeRepository.findByMatricule("M00001")).thenReturn(new Employe());
 
         //When/Then
         EntityExistsException e = Assertions.assertThrows(EntityExistsException.class, () -> employeService.embaucheEmploye(nom, prenom, poste, niveauEtude, tempsPartiel));
