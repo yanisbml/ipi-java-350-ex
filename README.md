@@ -82,13 +82,13 @@ Commencer par faire une branche `evaluation` à partir de votre branche `master`
 
 ## Tests d'intégration
 
-- Tester sans dépendance à la BDD la méthode `?` d'`EmployeService`
+- Tester sans dépendance à la BDD la méthode `calculPerformanceCommercial` d'`EmployeService`
 - Tester de manière intégrée une cas nominal de la méthode précédente
-- Tester de manière intégrée la méthode d'`EmployeRepository` `?`
+- Tester de manière intégrée la méthode d'`EmployeRepository` `avgPerformanceWhereMatriculeStartsWith`
 
 ## Autres
 
-- S'assurer que votre code passe et qu'il n'y a aucun *code smells* ou *anomalies* ou *bugs* bloquants, critiques ou majeurs.
+- S'assurer que votre code passe et qu'il n'y a aucun *code smells* ou *anomalies* ou *bugs* bloquants, critiques ou majeurs. Si c'est le cas, corriger le code fourni.
 - S'assurer d'avoir 100% de couverture de code sur les méthodes testés dans l'évaluation
 
 ## Revue de code
