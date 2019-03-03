@@ -163,7 +163,6 @@ public class Employe {
 
     /**
      * @param dateEmbauche the dateEmbauche to set
-     * @throws Exception
      */
     public void setDateEmbauche(LocalDate dateEmbauche) {
         this.dateEmbauche = dateEmbauche;
