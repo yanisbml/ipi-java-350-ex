@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-public class Employe {
+public class Employe
 
 
     @Id
