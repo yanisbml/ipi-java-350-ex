@@ -2,10 +2,7 @@ package com.ipiecoles.java.java350.service;
 
 
 import com.ipiecoles.java.java350.exception.EmployeException;
-import com.ipiecoles.java.java350.model.Employe;
-import com.ipiecoles.java.java350.model.Entreprise;
-import com.ipiecoles.java.java350.model.NiveauEtude;
-import com.ipiecoles.java.java350.model.Poste;
+import com.ipiecoles.java.java350.model.*;
 import com.ipiecoles.java.java350.repository.EmployeRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -39,6 +36,7 @@ public class EmployeServiceIntegrationTest {
     @Test
     public void integrationEmbaucheEmploye() throws EmployeException {
         //Given
+        EmployeMaker.unTechnicien().withNom("Jane").build();
         employeRepository.save(new Employe("Doe", "John", "T12345", LocalDate.now(), Entreprise.SALAIRE_BASE, 1, 1.0));
         String nom = "Doe";
         String prenom = "John";
