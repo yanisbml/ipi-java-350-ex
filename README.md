@@ -70,10 +70,10 @@ Tester de façon intégrée un cas nominal de la méthode `embaucheEmploye` de l
 ## Maintenabilité
 
 - S'assurer de la lisibilité du code et du respect des conventions.
-- Ajouter des `logger` aux endroits stratégiques du code en utilisant le bon niveau de log.
-- Vérifier et le cas échéant compléter la documentation du code, générer la JavaDoc.
+- Ajouter des `logger` aux endroits stratégiques du code en utilisant le bon niveau de log. Rediriger toutes les logs d'erreur dans un fichier `error.log` et tous vos logs dans un fichier `logs.log`. Ajouter la configuration de rotation tous les jours et faire en sorte que les fichiers ne puissent dépasser 10Mo.
+- Vérifier et le cas échéant compléter la documentation du code, générer la JavaDoc avec maven.
 - Ajouter à votre Github une documentation statique avec MkDocs.
-- Ajouter des badges contenant les métriques principales de votre projet en haut de ce README.
+- Ajouter des badges contenant les métriques principales de votre projet en haut de ce README à l'aide de l'API de Sonar : https://sonarcloud.io/web_api/api/project_badges
 
 # Evaluation
 
