@@ -36,7 +36,6 @@ public class EmployeServiceIntegrationTest {
     @Test
     public void integrationEmbaucheEmploye() throws EmployeException {
         //Given
-        EmployeMaker.unTechnicien().withNom("Jane").build();
         employeRepository.save(new Employe("Doe", "John", "T12345", LocalDate.now(), Entreprise.SALAIRE_BASE, 1, 1.0));
         String nom = "Doe";
         String prenom = "John";
