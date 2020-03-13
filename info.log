@@ -1,0 +1,6 @@
+2020-03-12 09:19:06 - INFO  - Starting Java350Application on FR-L3355579 with PID 12528 (C:\Users\yanis.boumallassa\Documents\JAVA_012020\ipi-java-350-ex\target\classes started by yanis.boumallassa in C:\Users\yanis.boumallassa\Documents\JAVA_012020\ipi-java-350-ex)
+2020-03-12 09:19:06 - INFO  - No active profile set, falling back to default profiles: default
+2020-03-12 09:19:12 - INFO  - Started Java350Application in 6.774 seconds (JVM running for 12.938)
+2020-03-12 12:17:43 - INFO  - $logger{40} - Starting EmployeRepositoryTest on FR-L3355579 with PID 6624 (started by yanis.boumallassa in C:\Users\yanis.boumallassa\Documents\JAVA_012020\ipi-java-350-ex)
+2020-03-12 12:17:43 - INFO  - $logger{40} - No active profile set, falling back to default profiles: default
+2020-03-12 12:17:48 - INFO  - $logger{40} - Started EmployeRepositoryTest in 5.464 seconds (JVM running for 8.314)

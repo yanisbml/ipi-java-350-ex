@@ -56,4 +56,15 @@ public class EmployeRepositoryTest {
         //Then
         Assertions.assertEquals("40325", lastMatricule);
     }
+
+    @Test
+    public void GetPassageTempsPartiel() {
+        Employe employe = new Employe();
+        employe.setTempsPartiel(0.5);
+        employe.setSalaire(1000D);
+        Assertions.assertEquals(0.5, employe.getTempsPartiel());
+
+        employe.setSalaire(employe.getSalaire()/2);
+        Assertions.assertEquals(500D, employe.getSalaire());
+    }
 }
