@@ -2,7 +2,7 @@ language: java
 
 addons:
   sonarcloud:
-    organization: "pjvilloud-github"
+    organization: "yanisbml-github"
     apt:
       update: true
       sources:
